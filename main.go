@@ -4,11 +4,11 @@ import (
 	"fmt"
 
 	"github.com/sandro-lex-symphony/gobot"
-	"github.com/sandro-lex-symphony/snykbot/processor"
+	"github.com/sandro-lex-symphony/snykbot/processors"
 )
 
 func main() {
 	gobot.Init()
 	fmt.Println("XXXXX")
-	gobot.Loop(processor.Experiment)
+	gobot.Loop(processors.Experiment)
 }
