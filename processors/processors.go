@@ -3,22 +3,23 @@ package processors
 import (
 	"fmt"
 
+	"github.com/sandro-lex-symphony/gobot"
 	snykTool "github.com/sandro-lex-symphony/snykTools"
 )
 
 func Hello(sid, data string) {
-	err := SendMessage(sid, "<card accent='tempo-bg-color--blue' iconSrc=''><body><h1>filler</h1></body></card>")
-	Fatal(err)
+	err := gobot.SendMessage(sid, "<card accent='tempo-bg-color--blue' iconSrc=''><body><h1>filler</h1></body></card>")
+	gobot.Fatal(err)
 }
 
 func Experiment(sid, data string) {
-	cmd := GetCommand(data)
-	err := SendMessage(sid, cmd)
-	Fatal(err)
+	cmd := gobot.GetCommand(data)
+	err := gobot.SendMessage(sid, cmd)
+	gobot.Fatal(err)
 
 	fmt.Println("KJFLKJLD")
 	result, err := snykTool.GetOrgs()
-	Fatal(err)
+	gobot.Fatal(err)
 	var msg string
 	msg = "<card  accent='tempo-bg-color--blue' iconSrc=''><body>"
 	for _, org := range result.Orgs {
@@ -26,6 +27,6 @@ func Experiment(sid, data string) {
 	}
 	msg += "</body></card>"
 	fmt.Println(msg)
-	err = SendMessage(sid, msg)
-	Fatal(err)
+	err = gobot.SendMessage(sid, msg)
+	gobot.Fatal(err)
 }
